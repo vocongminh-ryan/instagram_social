@@ -1,17 +1,26 @@
-# instagram_social
+# Instagram Social
 
-A new Flutter project.
+Flutter starter project structured with Clean Architecture and `flutter_bloc` (Cubit).
 
-## Getting Started
+## Structure
 
-This project is a starting point for a Flutter application.
+```
+lib/
+├── app/                         # App shell, theme, global providers
+└── features/feed/
+    ├── data/                    # Data sources, models, repository implementation
+    ├── domain/                  # Entities, repository contracts, use cases
+    └── presentation/            # Pages, widgets and Cubits
+```
 
-A few resources to get you started if this is your first Flutter project:
+`FeedPage` renders state only. `FeedCubit` coordinates UI state and invokes the
+`GetFeed` use case. The use case depends on the `FeedRepository` contract; the
+data layer supplies its implementation. Replace `FeedLocalDataSource` with an
+API or database source without changing presentation or domain code.
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## Run
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+flutter pub get
+flutter run
+```
