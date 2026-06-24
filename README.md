@@ -1,22 +1,31 @@
 # Instagram Social
 
-Flutter starter project structured with Clean Architecture and `flutter_bloc` (Cubit).
+Flutter starter project structured as MVVM with Repository and Service layers.
 
 ## Structure
 
 ```
 lib/
-├── app/                         # App shell, theme, global providers
+├── app/                         # App shell, theme and global providers
 └── features/feed/
-    ├── data/                    # Data sources, models, repository implementation
-    ├── domain/                  # Entities, repository contracts, use cases
-    └── presentation/            # Pages, widgets and Cubits
+    ├── data/
+    │   ├── models/              # API/data models
+    │   ├── repositories/        # Cache, error handling and data orchestration
+    │   └── services/            # API/platform calls only
+    └── presentation/
+        ├── view_models/         # UI state and user-action commands
+        └── views/               # Widgets that render ViewModel state
 ```
 
-`FeedPage` renders state only. `FeedCubit` coordinates UI state and invokes the
-`GetFeed` use case. The use case depends on the `FeedRepository` contract; the
-data layer supplies its implementation. Replace `FeedLocalDataSource` with an
-API or database source without changing presentation or domain code.
+Data flows in one direction: `FeedPage` (View) → `FeedViewModel` →
+`FeedRepository` → `FeedApiService` → external API. State flows back from the
+ViewModel to the View. The view has no API or data-processing logic; the
+service has no caching or UI logic.
+
+`FeedApiService` currently supplies a delayed in-memory response so the app can
+run offline. Replace its `getPosts` body with HTTP/platform calls without
+changing the View or ViewModel. `FeedRepository` is the suitable place for
+response mapping, caching and error normalization.
 
 ## Run
 

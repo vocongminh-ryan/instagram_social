@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../features/feed/domain/usecases/get_feed.dart';
-import '../features/feed/presentation/cubit/feed_cubit.dart';
-import '../features/feed/presentation/pages/feed_page.dart';
+import '../features/feed/data/repositories/feed_repository.dart';
+import '../features/feed/presentation/view_models/feed_view_model.dart';
+import '../features/feed/presentation/views/feed_page.dart';
 
 class InstagramSocialApp extends StatelessWidget {
-  const InstagramSocialApp({super.key, required this.getFeed});
+  const InstagramSocialApp({super.key, required this.feedRepository});
 
-  final GetFeed getFeed;
+  final FeedRepository feedRepository;
 
   @override
   Widget build(BuildContext context) => BlocProvider(
-        create: (_) => FeedCubit(getFeed)..loadFeed(),
+        create: (_) => FeedViewModel(feedRepository)..loadFeed(),
         child: MaterialApp(
           title: 'Instagram Social',
           debugShowCheckedModeBanner: false,

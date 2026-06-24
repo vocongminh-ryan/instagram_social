@@ -1,14 +1,13 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:instagram_social/app/app.dart';
-import 'package:instagram_social/features/feed/data/datasources/feed_local_data_source.dart';
-import 'package:instagram_social/features/feed/data/repositories/feed_repository_impl.dart';
-import 'package:instagram_social/features/feed/domain/usecases/get_feed.dart';
+import 'package:instagram_social/features/feed/data/repositories/feed_repository.dart';
+import 'package:instagram_social/features/feed/data/services/feed_api_service.dart';
 
 void main() {
-  testWidgets('displays posts loaded by FeedCubit', (tester) async {
-    final getFeed = GetFeed(FeedRepositoryImpl(FeedLocalDataSource()));
+  testWidgets('displays posts loaded by FeedViewModel', (tester) async {
+    final repository = FeedRepository(FeedApiService());
 
-    await tester.pumpWidget(InstagramSocialApp(getFeed: getFeed));
+    await tester.pumpWidget(InstagramSocialApp(feedRepository: repository));
     await tester.pump(const Duration(milliseconds: 300));
 
     expect(find.text('minh.nguyen'), findsOneWidget);

@@ -1,10 +1,13 @@
-import '../../domain/entities/post.dart';
-
-class PostModel extends Post {
+class PostModel {
   const PostModel({
-    required super.id,
-    required super.author,
-    required super.caption,
-    required super.likes,
+    required this.id,
+    required this.author,
+    required this.caption,
+    required this.likes,
   });
+
+  final String id;
+  final String author;
+  final String caption;
+  final int likes;
 }
