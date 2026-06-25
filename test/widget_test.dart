@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:instagram_social/app/app.dart';
-import 'package:instagram_social/features/feed/data/repositories/feed_repository.dart';
-import 'package:instagram_social/features/feed/data/services/feed_api_service.dart';
+import 'package:instagram_social/ui/features/feed/data/repositories/feed_repository.dart';
+import 'package:instagram_social/ui/features/feed/data/services/feed_api_service.dart';
 
 void main() {
   testWidgets('displays posts loaded by FeedViewModel', (tester) async {

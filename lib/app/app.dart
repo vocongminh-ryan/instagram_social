@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../features/feed/data/repositories/feed_repository.dart';
-import '../features/feed/presentation/view_models/feed_view_model.dart';
-import '../features/feed/presentation/views/feed_page.dart';
+import '../ui/features/feed/data/repositories/feed_repository.dart';
+import '../ui/features/feed/presentation/view_models/feed_view_model.dart';
+import '../ui/features/feed/presentation/views/feed_page.dart';
 
 class InstagramSocialApp extends StatelessWidget {
   const InstagramSocialApp({super.key, required this.feedRepository});
