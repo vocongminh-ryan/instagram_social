@@ -10,4 +10,12 @@ extension ThemeContext on BuildContext {
   AppTypography get typo => Theme.of(this).extension<AppTypography>()!;
 }
 
-class AppTheme {}
+class AppTheme {
+  static ThemeData lightTheme() {
+    return ThemeData();
+  }
+
+  static ThemeData darkTheme() {
+    return ThemeData();
+  }
+}
