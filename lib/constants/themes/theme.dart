@@ -103,7 +103,7 @@ class AppTheme {
     required AppThemeExtention appExtension,
     required AppTypography typography,
   }) {
-    final textTheme = _textTheme(colorScheme.onSurface);
+    final textTheme = AppTypography.instagramTextTheme(colorScheme.onSurface);
 
     return ThemeData(
       useMaterial3: true,
@@ -241,96 +241,10 @@ class AppTheme {
     );
   }
 
-  static TextTheme _textTheme(Color textColor) {
-    return TextTheme(
-      displayLarge: TextStyle(
-        color: textColor,
-        fontSize: 32,
-        fontWeight: FontWeight.w700,
-        height: 1.2,
-      ),
-      headlineMedium: TextStyle(
-        color: textColor,
-        fontSize: 22,
-        fontWeight: FontWeight.w700,
-        height: 1.25,
-      ),
-      titleLarge: TextStyle(
-        color: textColor,
-        fontSize: 20,
-        fontWeight: FontWeight.w700,
-        height: 1.3,
-      ),
-      titleMedium: TextStyle(
-        color: textColor,
-        fontSize: 16,
-        fontWeight: FontWeight.w600,
-        height: 1.35,
-      ),
-      bodyLarge: TextStyle(
-        color: textColor,
-        fontSize: 16,
-        fontWeight: FontWeight.w400,
-        height: 1.4,
-      ),
-      bodyMedium: TextStyle(
-        color: textColor,
-        fontSize: 14,
-        fontWeight: FontWeight.w400,
-        height: 1.35,
-      ),
-      labelLarge: TextStyle(
-        color: textColor,
-        fontSize: 14,
-        fontWeight: FontWeight.w600,
-        height: 1.2,
-      ),
-      labelSmall: TextStyle(
-        color: textColor,
-        fontSize: 12,
-        fontWeight: FontWeight.w500,
-        height: 1.25,
-      ),
-    );
-  }
-
   static AppTypography _typography(Color textColor, Color mutedColor) {
-    return AppTypography(
-      display: TextStyle(
-        color: textColor,
-        fontSize: 32,
-        fontWeight: FontWeight.w700,
-        height: 1.2,
-      ),
-      title: TextStyle(
-        color: textColor,
-        fontSize: 20,
-        fontWeight: FontWeight.w700,
-        height: 1.3,
-      ),
-      subtitle: TextStyle(
-        color: mutedColor,
-        fontSize: 15,
-        fontWeight: FontWeight.w400,
-        height: 1.35,
-      ),
-      body: TextStyle(
-        color: textColor,
-        fontSize: 14,
-        fontWeight: FontWeight.w400,
-        height: 1.35,
-      ),
-      caption: TextStyle(
-        color: mutedColor,
-        fontSize: 12,
-        fontWeight: FontWeight.w500,
-        height: 1.25,
-      ),
-      button: const TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.w600,
-        height: 1.2,
-      ),
+    return AppTypography.instagram(
+      textColor: textColor,
+      mutedColor: mutedColor,
     );
   }
 }

@@ -18,6 +18,102 @@ class AppTypography extends ThemeExtension<AppTypography> {
   final TextStyle caption;
   final TextStyle button;
 
+  static AppTypography instagram({
+    required Color textColor,
+    required Color mutedColor,
+  }) {
+    return AppTypography(
+      display: TextStyle(
+        color: textColor,
+        fontSize: 28,
+        fontWeight: FontWeight.w700,
+        height: 1.18,
+      ),
+      title: TextStyle(
+        color: textColor,
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+        height: 1.25,
+      ),
+      subtitle: TextStyle(
+        color: mutedColor,
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        height: 1.3,
+      ),
+      body: TextStyle(
+        color: textColor,
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        height: 1.3,
+      ),
+      caption: TextStyle(
+        color: mutedColor,
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        height: 1.25,
+      ),
+      button: const TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
+        height: 1.2,
+      ),
+    );
+  }
+
+  static TextTheme instagramTextTheme(Color textColor) {
+    return TextTheme(
+      displayLarge: TextStyle(
+        color: textColor,
+        fontSize: 28,
+        fontWeight: FontWeight.w700,
+        height: 1.18,
+      ),
+      headlineMedium: TextStyle(
+        color: textColor,
+        fontSize: 20,
+        fontWeight: FontWeight.w700,
+        height: 1.25,
+      ),
+      titleLarge: TextStyle(
+        color: textColor,
+        fontSize: 18,
+        fontWeight: FontWeight.w700,
+        height: 1.25,
+      ),
+      titleMedium: TextStyle(
+        color: textColor,
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+        height: 1.25,
+      ),
+      bodyLarge: TextStyle(
+        color: textColor,
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        height: 1.35,
+      ),
+      bodyMedium: TextStyle(
+        color: textColor,
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        height: 1.3,
+      ),
+      labelLarge: TextStyle(
+        color: textColor,
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
+        height: 1.2,
+      ),
+      labelSmall: TextStyle(
+        color: textColor,
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+        height: 1.2,
+      ),
+    );
+  }
+
   @override
   AppTypography copyWith({
     TextStyle? display,
