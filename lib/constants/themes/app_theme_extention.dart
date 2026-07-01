@@ -20,6 +20,38 @@ class AppThemeExtention extends ThemeExtension<AppThemeExtention> {
   final Color cardBorder;
   final Color inputFill;
 
+  static const AppThemeExtention instagramLight = AppThemeExtention(
+    success: Color(0xFF1DB954),
+    warning: Color(0xFFFCAF45),
+    info: Color(0xFF0095F6),
+    like: Color(0xFFED4956),
+    storyGradient: [
+      Color(0xFFF58529),
+      Color(0xFFFEDA77),
+      Color(0xFFDD2A7B),
+      Color(0xFF8134AF),
+      Color(0xFF515BD4),
+    ],
+    cardBorder: Color(0xFFDBDBDB),
+    inputFill: Color(0xFFFAFAFA),
+  );
+
+  static const AppThemeExtention instagramDark = AppThemeExtention(
+    success: Color(0xFF32D74B),
+    warning: Color(0xFFFCAF45),
+    info: Color(0xFF4CB5F9),
+    like: Color(0xFFFF3040),
+    storyGradient: [
+      Color(0xFFF58529),
+      Color(0xFFFEDA77),
+      Color(0xFFDD2A7B),
+      Color(0xFF8134AF),
+      Color(0xFF515BD4),
+    ],
+    cardBorder: Color(0xFF262626),
+    inputFill: Color(0xFF1A1A1A),
+  );
+
   @override
   AppThemeExtention copyWith({
     Color? success,
@@ -56,7 +88,9 @@ class AppThemeExtention extends ThemeExtension<AppThemeExtention> {
       info: Color.lerp(info, other.info, t)!,
       like: Color.lerp(like, other.like, t)!,
       storyGradient: List<Color>.generate(
-        storyGradient.length,
+        storyGradient.length < other.storyGradient.length
+            ? storyGradient.length
+            : other.storyGradient.length,
         (index) => Color.lerp(
           storyGradient[index],
           other.storyGradient[index],

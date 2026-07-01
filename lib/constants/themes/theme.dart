@@ -38,21 +38,7 @@ class AppTheme {
       colorScheme: colorScheme,
       scaffoldBackgroundColor: _lightBackground,
       dividerColor: const Color(0xFFDBDBDB),
-      appExtension: const AppThemeExtention(
-        success: Color(0xFF22C55E),
-        warning: Color(0xFFF59E0B),
-        info: Color(0xFF0095F6),
-        like: Color(0xFFED4956),
-        storyGradient: [
-          Color(0xFFFCAF45),
-          Color(0xFFFFDC80),
-          Color(0xFFE1306C),
-          Color(0xFFC13584),
-          Color(0xFF833AB4),
-        ],
-        cardBorder: Color(0xFFDBDBDB),
-        inputFill: Color(0xFFFAFAFA),
-      ),
+      appExtension: AppThemeExtention.instagramLight,
       typography: _typography(const Color(0xFF262626), const Color(0xFF737373)),
     );
   }
@@ -76,21 +62,7 @@ class AppTheme {
       colorScheme: colorScheme,
       scaffoldBackgroundColor: _darkBackground,
       dividerColor: const Color(0xFF262626),
-      appExtension: const AppThemeExtention(
-        success: Color(0xFF4ADE80),
-        warning: Color(0xFFFBBF24),
-        info: Color(0xFF4CB5F9),
-        like: Color(0xFFFF3040),
-        storyGradient: [
-          Color(0xFFFCAF45),
-          Color(0xFFFFDC80),
-          Color(0xFFE1306C),
-          Color(0xFFC13584),
-          Color(0xFF833AB4),
-        ],
-        cardBorder: Color(0xFF262626),
-        inputFill: Color(0xFF1A1A1A),
-      ),
+      appExtension: AppThemeExtention.instagramDark,
       typography: _typography(const Color(0xFFF5F5F5), const Color(0xFFA3A3A3)),
     );
   }
