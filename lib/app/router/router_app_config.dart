@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
+import 'package:instagram_social/app/observers/analytics_router_observer.dart';
 import 'package:instagram_social/app/router/router_app_name.dart';
 
 class RouterAppConfig {
@@ -49,7 +50,7 @@ class RouterAppConfig {
     goRouter = GoRouter(
       navigatorKey: rootNavigatorKey,
       initialLocation: initialLocation,
-      observers: [],
+      observers: [routerObservers, AnalyticsRouterObserver()],
       redirect: (context, state) {
         return null;
       },
