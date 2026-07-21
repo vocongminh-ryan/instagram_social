@@ -1,7 +1,10 @@
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
-import 'package:instagram_social/app/observers/analytics_router_observer.dart';
+import 'package:instagram_social/app/router/navigation_screen.dart';
 import 'package:instagram_social/app/router/router_app_name.dart';
+import 'package:instagram_social/constants/app_global_keys.dart';
+import 'package:instagram_social/presentation/home/home_screen.dart';
+import 'package:instagram_social/presentation/reels/reels_screen.dart';
 
 class RouterAppConfig {
   factory RouterAppConfig() {
@@ -14,31 +17,6 @@ class RouterAppConfig {
 
   GoRouter? goRouter;
 
-  bool get canPop => goRouter?.canPop() ?? false;
-
-  final routerObservers = RouteObserver<ModalRoute<void>>();
-  RouteObserver get routeObserverInstance => routerObservers;
-
-  // Returns the current URI path from the active router delegate.
-  String get currentPath {
-    if (_instance.goRouter == null) {
-      return '';
-    }
-    final lastMatch =
-        _instance.goRouter!.routerDelegate.currentConfiguration.last;
-    final matchList = lastMatch is ImperativeRouteMatch
-        ? lastMatch.matches
-        : _instance.goRouter!.routerDelegate.currentConfiguration;
-    return matchList.uri.toString();
-  }
-
-  String getCurrentRouterName() {
-    if (_instance.goRouter == null) return '';
-    final lastMatch =
-        _instance.goRouter!.routerDelegate.currentConfiguration.last;
-    return lastMatch.route.name ?? '';
-  }
-
   Future<void> initializeRouter({
     String initialLocation = '/${RouterAppName.home}',
   }) async {
@@ -48,13 +26,33 @@ class RouterAppConfig {
     }
 
     goRouter = GoRouter(
-      navigatorKey: rootNavigatorKey,
+      navigatorKey: AppGlobalKeys.rootNavigator,
       initialLocation: initialLocation,
-      observers: [routerObservers, AnalyticsRouterObserver()],
       redirect: (context, state) {
         return null;
       },
-      routes: [],
+      routes: [
+        ShellRoute(
+          navigatorKey: AppGlobalKeys.shellNavigator,
+          builder: (context, state, child) {
+            return NavigationScreen(child: child);
+          },
+          routes: [
+            GoRoute(
+              path: '/${RouterAppName.home}',
+              builder: (context, state) {
+                return const HomeScreen();
+              },
+            ),
+            GoRoute(
+              path: '/${RouterAppName.reel}',
+              builder: (context, state) {
+                return const ReelsScreen();
+              },
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

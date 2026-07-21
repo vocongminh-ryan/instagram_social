@@ -1,6 +1,6 @@
 # Instagram Social
 
-Instagram Social la mot Flutter project dang duoc build theo huong Clean Architecture ket hop BLoC.
+Instagram Social la mot Flutter project dang duoc build theo huong Clean Architecture ket hop BLoC/Cubit.
 
 Muc tieu cua architecture nay la tach ro UI, business logic, data source va app configuration de code de mo rong khi them Home, Reels, Profile, Auth, Feed, Search...
 
