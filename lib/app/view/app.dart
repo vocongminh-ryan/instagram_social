@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:instagram_social/app/router/router_app_config.dart';
 
 class App extends StatefulWidget {
@@ -22,10 +22,14 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: RouterAppConfig().goRouter,
+    return ScreenUtilInit(
       builder: (context, child) {
-        return child ?? const SizedBox.shrink();
+        return MaterialApp.router(
+          routerConfig: RouterAppConfig().goRouter,
+          builder: (context, child) {
+            return child ?? const SizedBox.shrink();
+          },
+        );
       },
     );
   }

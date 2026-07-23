@@ -4,6 +4,7 @@ import 'package:instagram_social/app/router/navigation_screen.dart';
 import 'package:instagram_social/app/router/router_app_name.dart';
 import 'package:instagram_social/constants/app_global_keys.dart';
 import 'package:instagram_social/presentation/home/home_screen.dart';
+import 'package:instagram_social/presentation/log_in/log_in_screen.dart';
 import 'package:instagram_social/presentation/reels/reels_screen.dart';
 
 class RouterAppConfig {
@@ -18,7 +19,7 @@ class RouterAppConfig {
   GoRouter? goRouter;
 
   Future<void> initializeRouter({
-    String initialLocation = '/${RouterAppName.home}',
+    String initialLocation = '/${RouterAppName.login}',
   }) async {
     if (goRouter != null) {
       goRouter!.dispose();
@@ -32,8 +33,14 @@ class RouterAppConfig {
         return null;
       },
       routes: [
+        GoRoute(
+          name: RouterAppName.login,
+          path: '/${RouterAppName.login}',
+          builder: (context, state) {
+            return const LogInScreen();
+          },
+        ),
         ShellRoute(
-          navigatorKey: AppGlobalKeys.shellNavigator,
           builder: (context, state, child) {
             return NavigationScreen(child: child);
           },
@@ -45,7 +52,7 @@ class RouterAppConfig {
               },
             ),
             GoRoute(
-              path: '/${RouterAppName.reel}',
+              path: '/${RouterAppName.reels}',
               builder: (context, state) {
                 return const ReelsScreen();
               },
